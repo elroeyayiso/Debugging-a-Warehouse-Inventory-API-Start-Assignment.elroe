@@ -14,6 +14,7 @@
     rel="stylesheet">
   <link rel="stylesheet" href="bulma.css">
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/mino-bad-words@1.7.1/lib/badwords.min.js"></script>
 </head>
 
 <body>
@@ -42,18 +43,10 @@
             Under the input tag for the tagline, add a p tag with class "help" and id "warning"
         2. Try submitting the form without a valid email or url-->
 
-        <label for="label" class= "label">Name: </label>
-        <input type="text" id="name-input" class="input" name="Name" required/>
+      
 
-        <label for="label" class= "label">Tagline: </label>
-        <input type="text" id="tagline-input" class="input" name="Tagline" minlength="10" maxlength="50" required/>
-        <p class= "help" id="warning"></p>
 
-        <label for="label" class= "label">Email: </label>
-        <input type="email" id="email-input" class="input" name="Email" required/>
 
-        <label for="label" class= "label">Profile Picture: </label>
-        <input type="url" id="pic-input" class="input" name="Profile Picture" required/>
 
 
         <!--Exercise 2: Finishing the form, radio inputs
@@ -63,24 +56,6 @@
            Set class "radio" on the labels
            In the inputs, set name to "guest-type" and set the value attribute to the label text.
         -->
-
-        <fieldset>
-
-          <legend>Attending as:</legend>
-
-          <label for = "radio" class = "radio">
-            <input type="radio" name="guest-type" value="Guest"/> Guest 
-          </label>
-
-          <label for = "radio" class = "radio">
-            <input type="radio" name="guest-type" value="Exhibition"/> Exhibition 
-          </label>
-
-          <label for = "radio" class = "radio">
-            <input type="radio" name="guest-type" value="Speaker"/> Speaker
-          </label>
-
-        </fieldset>
 
       
 
@@ -123,7 +98,7 @@
 
 
   <script>
-    const swears = ['poopypants', 'bobblehead', 'termite licker', 'knickers', 'bloomers'];
+    const swears = ['poopypants', 'bobblehead', 'termite licker', 'knickers', 'bloomers']
     const form = document.querySelector('form');
 
 
@@ -140,11 +115,7 @@
     3. Inside the function, use the this keyword to remove the class 'is-danger'
     4. Also, remove the class 'is-danger' from the warning p tag and change its text to an empty string.
     */
-    taglineInput.addEventListener('focus',function(){
-      waring.classList.remove('is-danger');
-      waring.textContent = ''
-      
-    });
+    
  
 
 
@@ -153,15 +124,8 @@
     /* 
     Exercise 6: Practice DOM selection
     Assign a variable to each element in the card that will show the input data.
-
-    When creating variable put on left
     */
 
-   let cardName = document.querySelector('#name');
-   let cardTagline = document.querySelector('#tagline');
-   let cardEmail = document.querySelector('#email');
-   let cardPic = document.querySelector('#profile')
-   let cardGuest = document.querySelector('#guest');
    
 
 
@@ -173,15 +137,6 @@
        add text to warning that says, "Clean up your language please."
        return false
     4. If not, return true.*/
-
-    function dirtyWords(words){
-      let badWords = swears.some((word) => words.includes(word));
-      if (badWords) {
-        return true;
-      } else {
-        return false;
-      }
-    }
 
 
 
@@ -205,35 +160,6 @@
     5. Use the global variables you created for the card elements to show the form data on the card.
     6. Check to make sure the function works. */
 
-    form.addEventListener('submit', function (event){
-      event.preventDefault();
-      let name = nameInput.value;
-      let tagline = taglineInput.value;
-      let email = emailInput.value;
-      let pic = picInput.value;
-
-      let guestType;
-      guestInputs.forEach((btn) => {
-        if(btn.checked === true){
-          guestType = btn.value
-        }
-      });
-
-      if(dirtyWords(tagline)){
-        warning.innerHTML = "Clean up your language please";
-        warning.innerHTML.add('is-danger');
-        taglineInput.innerHTML.add('classList');
-        return false;
-      }else{
-        cardName.innerHTML = name;
-        cardTagline.innerHTML = tagline;
-        cardEmail.innerHTML = email;
-        cardPic.src = pic;
-        cardGuest.innerHTML = guestType;
-      }
-    });
-
-    
    
 
 

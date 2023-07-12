@@ -92,15 +92,8 @@ input[type="submit"] {
 /* Exercise 5
 Use the valid and invalid pseudo selectors to style the text and border-color 
 of the inputs, red for invalid, green for valid */
-input:valid, input:focus:valid{
-    color: green;
-    border-color: green;
-}
 
-input:invalid, input:focus:invalid{
-    color: red;
-    border-color: red;
-}
+
 
 
 .help {
